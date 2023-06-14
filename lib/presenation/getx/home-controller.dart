@@ -7,7 +7,9 @@ import 'package:http/http.dart' as http;
 import '../../model/response-model.dart';
 
 class HomeController extends GetxController {
-  RxString selected = 'select'.obs;
+  RxString selected1 = 'select'.obs;
+  RxString selected2 = 'select'.obs;
+  RxString selected3 = 'select'.obs;
 
   RxList<ResultModel> result1 = <ResultModel>[].obs;
   RxList<ResultModel> result2 = <ResultModel>[].obs;
@@ -38,13 +40,13 @@ class HomeController extends GetxController {
   ].obs;
   RxBool isLoading = false.obs;
 
-  getData(String apiType) async {
+  getData(String apiType,String selected) async {
     isLoading.value = true;
     print('http://127.0.0.1:8000/$apiType');
     try {
       final response = await http.post(
           Uri.parse('http://127.0.0.1:8000/$apiType'),
-          body: json.encode({'input': selected.value}));
+          body: json.encode({'input': selected}));
       log(response.body.toString());
       final data = json.decode(response.body);
       result1.clear();
@@ -55,9 +57,9 @@ class HomeController extends GetxController {
         if (apiType == 'types/') {
           result1.value.add(ResultModel.fromJson(o));
         } else if (apiType == 'spicy-sweet/') {
-          result2.value.add(ResultModel.fromJson(o));
-        } else if (apiType == 'weight-muscle/') {
           result3.value.add(ResultModel.fromJson(o));
+        } else if (apiType == 'weight-muscle/') {
+          result2.value.add(ResultModel.fromJson(o));
         }
       }
     } catch (error) {

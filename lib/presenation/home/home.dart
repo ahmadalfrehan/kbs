@@ -30,10 +30,22 @@ class Home extends GetView<HomeController> {
                       for (var i = 0; i < 3; ++i)
                         OptionsResults(
                           onPressed: (value) {
-                            print(value);
-                            controller.selected.value =value.toString();
-                            controller.getData(controller.apiType[i]);
 
+                            i == 0
+                                ? controller.selected1.value = value.toString()
+                                : i == 2
+                                    ? controller.selected2.value =
+                                        value.toString()
+                                    : controller.selected3.value =
+                                        value.toString();
+                            controller.getData(
+                              controller.apiType[i],
+                              i == 0
+                                  ? controller.selected1.value
+                                  : i == 2
+                                      ? controller.selected2.value
+                                      : controller.selected3.value,
+                            );
                           },
                           message: controller.messages[i],
                           options: controller.option[i],
@@ -42,7 +54,11 @@ class Home extends GetView<HomeController> {
                               : i == 1
                                   ? controller.result2
                                   : controller.result3,
-                          selected: controller.selected.value,
+                          selected: i == 0
+                              ? controller.selected1.value
+                              : i == 2
+                                  ? controller.selected2.value
+                                  : controller.selected3.value,
                         ),
                     ],
                   ),
