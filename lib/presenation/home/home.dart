@@ -38,7 +38,7 @@ class Home extends GetView<HomeController> {
                                         value.toString()
                                     : controller.selected3.value =
                                         value.toString();
-                            controller.getData(
+                            controller.getData(i,
                               controller.apiType[i],
                               i == 0
                                   ? controller.selected1.value

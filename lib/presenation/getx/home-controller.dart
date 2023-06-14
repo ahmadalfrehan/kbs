@@ -40,7 +40,7 @@ class HomeController extends GetxController {
   ].obs;
   RxBool isLoading = false.obs;
 
-  getData(String apiType,String selected) async {
+  getData(int index, String apiType, String selected) async {
     isLoading.value = true;
     print('http://127.0.0.1:8000/$apiType');
     try {
@@ -49,9 +49,15 @@ class HomeController extends GetxController {
           body: json.encode({'input': selected}));
       log(response.body.toString());
       final data = json.decode(response.body);
-      result1.clear();
-      result2.clear();
-      result3.clear();
+      if (index == 0) {
+        result1.clear();
+      }
+      if (index == 1) {
+        result2.clear();
+      }
+      if (index == 2) {
+        result3.clear();
+      }
       Map<String, dynamic> userData = Map<String, dynamic>.from(data);
       for (var o in userData['message']) {
         if (apiType == 'types/') {
