@@ -99,7 +99,7 @@ class DietPlan extends GetView<HomeController> {
                                           hintText: "Weight",
                                         ),
                                       ),
-                                      const SizedBox(height: 10),
+                                      const SizedBox(height: 15),
                                       const Text("Enter your gender"),
                                       Row(
                                         mainAxisAlignment:
@@ -134,6 +134,7 @@ class DietPlan extends GetView<HomeController> {
                                               }),
                                         ],
                                       ),
+                                      SizedBox(height: 10),
                                       const Text(
                                           "Are you participating in a competition?"),
                                       Row(
