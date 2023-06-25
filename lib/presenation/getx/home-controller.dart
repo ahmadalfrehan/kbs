@@ -68,12 +68,12 @@ class HomeController extends GetxController {
           await http.post(Uri.parse('http://127.0.0.1:8000/$apiType'),
               headers: {"Content-Type": "application/json"},
               body: json.encode({
-                "age": "23",
-                "height": "170",
-                "weight": "58",
-                "gender": "female",
-                "competing": "y",
-                "intensity": "high"
+                "age": age.text,
+                "height": height.text,
+                "weight": weight.text,
+                "gender": gender.text,
+                "competing": competing.text,
+                "intensity": intensity.value
               }));
       log(response.body.toString());
       log(response.statusCode.toString());

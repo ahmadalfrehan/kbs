@@ -15,6 +15,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: const DietPlan(),
+      color: Color.fromRGBO(37, 45, 52, 1),
+      // theme: ThemeData(
+      //   primarySwatch:
+      // ),
       initialBinding: HomeBindings(),
     );
   }
