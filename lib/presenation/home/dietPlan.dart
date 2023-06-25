@@ -26,17 +26,16 @@ class DietPlan extends GetView<HomeController> {
                     children: [
                       const SizedBox(height: 20),
                       Container(
+                        width: Get.width / 1.09,
+                        height: 200,
                         clipBehavior: Clip.none,
                         decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage
-                          ),
+                            image: const DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage("assets/diet.png"),
+                            ),
                             borderRadius: BorderRadius.circular(10)),
                         alignment: Alignment.center,
-                        child: Image.asset(
-                          "assets/diet.png",
-                          width: Get.width / 1.09,
-                        ),
                       ),
                       const SizedBox(height: 5),
                       SizedBox(
@@ -64,7 +63,7 @@ class DietPlan extends GetView<HomeController> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(12.0),
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    // mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -238,7 +237,23 @@ class DietPlan extends GetView<HomeController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Image.asset("assets/check.png"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: Get.width / 2.5,
+                  height: 150,
+                  clipBehavior: Clip.none,
+                  decoration: BoxDecoration(
+                      image: const DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage("assets/check.png"),
+                      ),
+                      borderRadius: BorderRadius.circular(10)),
+                  alignment: Alignment.center,
+                ),
+              ],
+            ),
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
