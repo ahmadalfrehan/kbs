@@ -1,17 +1,15 @@
 class ResultModel {
-  // String? result;
   String? yourGender;
   String? yourAge;
   double? caloriesGoal;
-
-  ResultModel.empty();
   BmI? bmi;
-  List<String> recommendedFoods = [];
+  List recommendedFoods = [];
   double? neededCalories;
-
   String? setRecommended;
   String? rangeCalories;
   String? explanation;
+
+  ResultModel.empty();
 
   ResultModel({
     required this.yourGender,

@@ -147,7 +147,15 @@ class DietPlan extends GetView<HomeController> {
                                 const SizedBox(height: 20),
                                 InkWell(
                                   onTap: (){
-                                    controller.performPostRequest(0, "advanced-diet", "selected");
+                                    controller.performPostRequest(
+                                        0, "advanced-diet", "selected");
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return AlertDialog(
+                                            content: Container(),
+                                          );
+                                        });
                                   },
                                   onLongPress: (){
                                     controller.performPostRequest(0, "diet", "selected");
