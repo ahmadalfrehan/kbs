@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,9 +12,19 @@ class HomeController extends GetxController {
   RxString selected2 = 'select'.obs;
   RxString selected3 = 'select'.obs;
 
+  TextEditingController age = TextEditingController();
+  TextEditingController gender = TextEditingController();
+  TextEditingController height = TextEditingController();
+  TextEditingController weight = TextEditingController();
+  TextEditingController competing = TextEditingController();
+  RxBool competingBool = false.obs;
+  RxBool genderBool = false.obs;
+  RxString intensity = "select".obs;
+
   RxList<ResultModel> result1 = <ResultModel>[].obs;
   RxList<ResultModel> result2 = <ResultModel>[].obs;
   RxList<ResultModel> result3 = <ResultModel>[].obs;
+  RxList<String> optionIntensity = <String>["low", "moderate", "high"].obs;
   RxList<List<String>> option = [
     [
       'vegetarian',
