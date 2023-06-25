@@ -51,7 +51,7 @@ class HomeController extends GetxController {
   ].obs;
   RxBool isLoading = false.obs;
 
-  getData(int index, String apiType, String selected) async {
+  performPostRequest(int index, String apiType, String selected) async {
     isLoading.value = true;
     print('http://127.0.0.1:8000/$apiType');
     try {

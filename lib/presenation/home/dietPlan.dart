@@ -143,6 +143,25 @@ class DietPlan extends GetView<HomeController> {
                                   ),
                                 ),
                               ),
+                              const SizedBox(height: 20),
+                              InkWell(
+                                onTap: (){
+                                  controller.performPostRequest(0, "advanced-diet", "selected");
+                                },
+                                onLongPress: (){
+                                  controller.performPostRequest(0, "diet", "selected");
+                                },
+                                child: Container(
+                                  height: 45,
+                                  width: Get.width / 1.2,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    color: Colors.blueAccent,
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child: const Text("Save",style: TextStyle(color: Colors.white),),
+                                ),
+                              )
                             ],
                           ),
                         ),
