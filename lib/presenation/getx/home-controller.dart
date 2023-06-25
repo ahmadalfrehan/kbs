@@ -22,6 +22,7 @@ class HomeController extends GetxController {
   RxString intensity = "select".obs;
 
   RxList<ResultModel> result1 = <ResultModel>[].obs;
+  Rx<ResultModel> result = ResultModel.empty().obs;
   RxList<ResultModel> result2 = <ResultModel>[].obs;
   RxList<ResultModel> result3 = <ResultModel>[].obs;
   RxList<String> optionIntensity = <String>["low", "moderate", "high"].obs;
@@ -54,11 +55,28 @@ class HomeController extends GetxController {
   performPostRequest(int index, String apiType, String selected) async {
     isLoading.value = true;
     print('http://127.0.0.1:8000/$apiType');
+    log(json.encode({
+      "age": age.text,
+      "height": height.text,
+      "weight": weight.text,
+      "gender": gender.text,
+      "competing": competing.text,
+      "intensity": intensity.value
+    }));
     try {
-      final response = await http.post(
-          Uri.parse('http://127.0.0.1:8000/$apiType'),
-          body: json.encode({'input': selected}));
+      final response =
+          await http.post(Uri.parse('http://127.0.0.1:8000/$apiType'),
+              headers: {"Content-Type": "application/json"},
+              body: json.encode({
+                "age": "23",
+                "height": "170",
+                "weight": "58",
+                "gender": "female",
+                "competing": "y",
+                "intensity": "high"
+              }));
       log(response.body.toString());
+      log(response.statusCode.toString());
       final data = json.decode(response.body);
       if (index == 0) {
         result1.clear();
@@ -69,16 +87,12 @@ class HomeController extends GetxController {
       if (index == 2) {
         result3.clear();
       }
-      Map<String, dynamic> userData = Map<String, dynamic>.from(data);
-      for (var o in userData['message']) {
-        if (apiType == 'types/') {
-          result1.value.add(ResultModel.fromJson(o));
-        } else if (apiType == 'spicy-sweet/') {
-          result3.value.add(ResultModel.fromJson(o));
-        } else if (apiType == 'weight-muscle/') {
-          result2.value.add(ResultModel.fromJson(o));
-        }
-      }
+      Map<String, dynamic> userData = Map<String, dynamic>.from(data['result']);
+      log(userData.toString());
+
+      // result1.value.add(ResultModel.fromJson(o['result']));
+      result.value = ResultModel.fromJson(userData['result']);
+      log(result.toString());
     } catch (error) {
       log(error.toString());
     }
