@@ -1,16 +1,19 @@
-# kbs
+## Diet recommendation system
+A simple diet recommendation system built with experta library in python
+(previously known as pyknow)
+and linked to flutter using fastapi
 
-A new Flutter project.
+## getting started
+first of all u need to instal #fastapi and #experta 
+''' 
+pip install fastapi 
+pip install experta
+'''
+and then execute all cells 
+and u will have a local server running on ur machine 
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+go ahead and run flutter project by typing 
+'''
+flutter run 
+'''
+and enjoy !
