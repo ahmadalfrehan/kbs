@@ -17,4 +17,4 @@ flutter run
 ```
 and enjoy !
 
-# visit my [website](https://ahmadalfrehan.com)
+# visit my [website](https://ahmadalfrehan.org)
